@@ -1,8 +1,8 @@
 // src/pages/Login.tsx
-import { createSignal, createEffect, Show } from "solid-js";
+import { createSignal, createEffect, Show, lazy } from "solid-js";
 import { useNavigate, useLocation, A } from "@solidjs/router";
 import { useAuth } from "./contexts/AuthContext";
-
+const Home = lazy(() => import("./Home"));
 const Login = () => {
   const [email, setEmail] = createSignal("");
   const [password, setPassword] = createSignal("");
@@ -52,7 +52,7 @@ const Login = () => {
       <div class="w-full max-w-md bg-white shadow-md rounded-lg p-6">
         <h2 class="text-2xl font-bold mb-2">Login</h2>
         <p class="text-gray-600 mb-4">Enter your credentials to access your account</p>
-
+<Home/>
         <Show when={!authLoading() && !isAuthenticated()}>
           <form onSubmit={handleSubmit} class="space-y-4">
             {/* Email */}
