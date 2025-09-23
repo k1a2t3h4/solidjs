@@ -124,7 +124,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
   ) => {
     try {
     
-      const response = await fetch(`${API_URL}/login`, {
+      const response = await fetch('http://server-production-3a02b.up.railway.app/bulk-test', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -150,7 +150,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
   ): Promise<boolean> => {
     try {
     
-      const response = await fetch(`${API_URL}/login`, {
+      const response = await fetch('http://server-production-3a02b.up.railway.app/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
