@@ -33,7 +33,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>();
 
-const API_URL = "http://127.0.0.1:3001";
+const API_URL = "server-production-3a02b.up.railway.app";
 
 // Helpers
 const getStoredToken = (): string | null => localStorage.getItem("auth_token");
@@ -120,6 +120,28 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
     console.log(results);
   };
   
+  const test = async (
+  ) => {
+    try {
+    
+      const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data)
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error("test error", err);
+      return false;
+    }
+  };
+
   const login = async (
     email: string,
     password: string,
@@ -146,6 +168,7 @@ export const AuthProvider = (props: { children: JSX.Element }) => {
         setUser({ ...data.user });
         return true;
       }
+      test()
       return false;
     } catch (err) {
       console.error("Login error", err);
